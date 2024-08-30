@@ -18,9 +18,9 @@
                                     class="rounded-circle border border-success">
                             </a>
                             @else
-                            <a href="{{route('company',[$employer->id])}}">
+                            {{-- <a href="{{route('company',[$employer->id])}}">
                                 <img src="icons8-amazon-60.png" width="50" class="rounded-circle border border-success">
-                            </a>
+                            </a> --}}
                             @endif
                         </div>
                         <div class="ms-3">
@@ -39,7 +39,15 @@
         <p class="lead">
             <a href="/login" class="btn btn-success btn-lg px-4">Sign In</a>
             or
-            <a href="/register" class="text-success">Register</a> to manage your profile and start applying for jobs.
+            {{-- <a href="/register" class="text-success">Register</a> to manage your profile and start applying for jobs. --}}
+
+            <p>
+                Register as a
+                <a href="/register/seeker" class="text-success">Job Seeker</a>
+                or an
+                <a href="/register/employer" class="text-success">Employer</a>
+                to manage your profile and start applying for jobs.
+            </p>
         </p>
     </section>
 
@@ -51,18 +59,14 @@
                 Filter
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{route('listing.index',['sort' => 'salary_high_to_low'])}}">Salary:
-                        High to Low</a></li>
-                <li><a class="dropdown-item" href="{{route('listing.index',['sort' => 'salary_low_to_high'])}}">Salary:
-                        Low to High</a></li>
-                <li><a class="dropdown-item" href="{{route('listing.index',['date' => 'latest'])}}">Date: Latest</a>
+                <li><a class="dropdown-item" href="{{route('listing.index',['sort' => 'salary_high_to_low'])}}">High to Low Salary</a></li>
+                <li><a class="dropdown-item" href="{{route('listing.index',['sort' => 'salary_low_to_high'])}}">Low to High Salary</a></li>
+                <li><a class="dropdown-item" href="{{route('listing.index',['date' => 'latest'])}}">Latest</a>
                 </li>
-                <li><a class="dropdown-item" href="{{route('listing.index',['date' => 'oldest'])}}">Date: Oldest</a>
+                <li><a class="dropdown-item" href="{{route('listing.index',['date' => 'oldest'])}}">Oldest</a>
                 </li>
-                <li><a class="dropdown-item" href="{{route('listing.index',['job_type' => 'Fulltime'])}}">Job Type:
-                        Fulltime</a></li>
-                <li><a class="dropdown-item" href="{{route('listing.index',['job_type' => 'Parttime'])}}">Job Type:
-                        Parttime</a></li>
+                <li><a class="dropdown-item" href="{{route('listing.index',['job_type' => 'Fulltime'])}}">Fulltime</a></li>
+                <li><a class="dropdown-item" href="{{route('listing.index',['job_type' => 'Parttime'])}}">Parttime</a></li>
             </ul>
         </div>
     </div>
@@ -109,7 +113,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-12 mb-4">
                 <h5>About Company</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </div>
             <div class="col-lg-4 col-md-6 mb-4">
                 <h5>Search Something</h5>
@@ -118,7 +122,7 @@
                         placeholder="Search" />
                 </div>
                 <ul class="fa-ul">
-                    <li class="mb-3"><span class="fa-li"><i class="fas fa-home"></i></span> Melbourne, Australia</li>
+                    <li class="mb-3"><span class="fa-li"><i class="fas fa-home"></i></span> Addis Ababa, Ethiopia</li>
                     <li class="mb-3"><span class="fa-li"><i class="fas fa-envelope"></i></span> info@techjobs.com</li>
                     <li><span class="fa-li"><i class="fas fa-phone"></i></span> +123456789</li>
                 </ul>
@@ -129,7 +133,7 @@
                     <tbody>
                         <tr>
                             <td>Mon - Thu:</td>
-                            <td>8am - 9pm</td>
+                            <td>8am - 8pm</td>
                         </tr>
                         <tr>
                             <td>Fri - Sat:</td>
@@ -145,7 +149,7 @@
         </div>
     </div>
     <div class="text-center py-2" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2023 Tech Jobs
+        © 2024 Tech Jobs
     </div>
 </footer>
 
