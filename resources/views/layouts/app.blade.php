@@ -31,7 +31,7 @@
 						<a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 							@if(auth()->user()->profile_pic)
 							<img src="{{Storage::url( auth()->user()->profile_pic)}}" width="40" class="rounded-circle">
-							@else 
+							@else
 							<img src="https://placehold.co/400" class="rounded-circle" width="40">
 							@endif
 						</a>
@@ -46,7 +46,7 @@
 							<li class="nav-item">
 								<a class="nav-link" id="logout" href="#">Logout</a>
 							</li>
-							@else 
+							@else
 							<li class="nav-item">
 								<a class="nav-link" id="" href="{{route('dashboard')}}">Dashboard</a>
 							</li>
@@ -56,7 +56,7 @@
 
 					@endif
 
-					
+
 					@if(!Auth::check())
 					<li class="nav-item">
 						<a class="nav-link" href="{{route('login')}}">Login</a>
@@ -68,7 +68,7 @@
 						<a class="nav-link" href="{{route('create.employer')}}">Company</a>
 					</li>
 					@endif
-	
+
 					<form id="form-logout" action="{{route('logout')}}" method="post">@csrf </form>
 				</ul>
 			</div>
