@@ -35,7 +35,7 @@ class UserController extends Controller
         ]);
 
         Auth::login($user);
-      
+
         $user->sendEmailVerificationNotification();
 
         return response()->json('success');
@@ -107,7 +107,7 @@ class UserController extends Controller
     public function seekerProfile()
     {
         return view('seeker.profile');
-    } 
+    }
 
     public function changePassword(Request $request)
     {
@@ -134,7 +134,7 @@ class UserController extends Controller
         ]);
 
         if($request->hasFile('resume')) {
-            $resume = $request->file('resume')->store('resume', 'public');   
+            $resume = $request->file('resume')->store('resume', 'public');
             User::find(auth()->user()->id)->update(['resume' => $resume]);
 
             return back()->with('success','Your resume has been updated successfully');
@@ -143,18 +143,45 @@ class UserController extends Controller
     }
 
 
+    // public function update(Request $request)
+    // {
+    //     if($request->hasFile('profile_pic')) {
+    //         $imagepath = $request->file('profile_pic')->store('profile', 'public');
+
+    //         User::find(auth()->user()->id)->update(['profile_pic' => $imagepath]);
+    //     }
+
+    //     User::find(auth()->user()->id)->update($request->except('profile_pic'));
+
+    //     return back()->with('success','Your profile has been updated');
+    // }
+
+
+
     public function update(Request $request)
-    {
-        if($request->hasFile('profile_pic')) {
-            $imagepath = $request->file('profile_pic')->store('profile', 'public');   
+{
+    // Validate the uploaded file
+    $request->validate([
+        'profile_pic' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Only validate if an image is uploaded
+        // other validations can go here
+    ]);
 
-            User::find(auth()->user()->id)->update(['profile_pic' => $imagepath]);
-        }
+    $user = auth()->user();
 
-        User::find(auth()->user()->id)->update($request->except('profile_pic'));
-
-        return back()->with('success','Your profile has been updated');
+    // Check if the request has a file and store it
+    if ($request->hasFile('profile_pic')) {
+        // Store the image in the 'public/profile' directory
+        $imagePath = $request->file('profile_pic')->store('profile', 'public');
+        // Update the user's profile_pic column with the new image path
+        $user->profile_pic = $imagePath;
     }
+
+    // Update other user details if provided
+    $user->update($request->except('profile_pic'));
+
+    return back()->with('success', 'Your profile has been updated');
+}
+
 
     public function jobApplied()
     {

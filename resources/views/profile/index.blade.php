@@ -19,6 +19,14 @@
                     @if(auth()->user()->profile_pic)
                         <img src="{{Storage::url(auth()->user()->profile_pic)}}" width="150" class="mt-3">
                     @endif
+                    {{-- @if(auth()->user()->profile_pic)
+                    <p>Image URL: {{ Storage::url(auth()->user()->profile_pic) }}</p>
+                    <img src="{{ Storage::url(auth()->user()->profile_pic) }}" width="150" class="mt-3">
+                    @endif --}}
+
+                    {{-- @if(auth()->user()->profile_pic)
+                    <img src="{{ asset('storage/' . auth()->user()->profile_pic) }}" width="150" class="mt-3">
+                    @endif --}}
                 </div>
                 <div class="form-group">
                     <label for="name">Company name</label>
